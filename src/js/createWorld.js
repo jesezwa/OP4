@@ -1,7 +1,5 @@
-import { Actor, Color, Loader, Vector, Rectangle } from "excalibur"
+import { Actor, Vector } from "excalibur"
 import { Resources } from './resources.js'
-import { TiledResource } from "@excaliburjs/plugin-tiled";
-import { UI } from "./ui.js";
 import { placeTower } from './builtTower.js';
 
 
@@ -17,7 +15,6 @@ export class CreateTileMap extends Actor {
      * @param {*} engine 
      */
     onInitialize(engine) {
-
         Resources.TiledMapResource.addToScene(engine.currentScene)
     }
 }
@@ -77,8 +74,9 @@ class GridCell extends Actor {
     // Wanneer er wordt geklikt op een gridcell, zet bouwmodus uit en type toren weer leeg
     onInitialize(engine) {
         this.on('pointerdown', () => {
+            console.log('Bouwmodus:', this.game.buildMode, 'Type of Tower:', this.game.typeOfTower, 'Has Tower:', this.hasTower);
             if (this.game.buildMode && this.game.typeOfTower && !this.hasTower) {
-
+                console.log('billen');
                 placeTower(engine, this.pos.x, this.pos.y, this.width, this.height, this.game.typeOfTower);
                 this.game.buildMode = false; // Schakel bouwmodus uit na plaatsen
                 this.game.typeOfTower = null; // Reset de geselecteerde toren

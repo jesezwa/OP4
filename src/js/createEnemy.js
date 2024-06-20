@@ -31,7 +31,7 @@ export class CreateEnemy extends Actor {
     }
 
     hitSomething(event) {
-        console.log("HarpyEnemy hit detected with:");
+
         if (event.other instanceof BuiltTower) {
             this.targetTower = event.other; // Stel de toren in als het doelwit
             this.attackTimer.start(); // Start de aanvalstimer als de vijand een toren raakt
@@ -41,7 +41,7 @@ export class CreateEnemy extends Actor {
 
 export class HarpyEnemy extends CreateEnemy {
     constructor(position, coins) {
-        super(position, -60, 100, 50, Resources.HarpyEnemy.toSprite());
+        super(position, -100, 500, 50, Resources.HarpyEnemy.toSprite());
 
         this.attackTimer = new Timer(() => this.attack(), 500, true);
         this.value = 50;
@@ -103,7 +103,7 @@ export class HarpyEnemy extends CreateEnemy {
         super.update(engine, delta);
         // Controleer of de vijand de linkerzijde van het scherm heeft bereikt
         if (this.pos.x <= 0) {
-            console.log('game over')
+            engine.playerTakesDamage();
             this.kill();
         }
     }

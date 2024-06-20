@@ -24,7 +24,7 @@ export class HarpyEnemySpawner {
         this.maxEnemies = maxEnemies;
         this.currentEnemies = 0;
 
-        console.log(this.coins);
+
 
     }
 

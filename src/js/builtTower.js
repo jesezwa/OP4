@@ -26,7 +26,7 @@ export class BuiltTower extends Actor {
 
 
     takeDamage(amount) {
-        this.hp -= amount; // Wanneer damage, HP eraf
+        this.hp -= amount; // Wanneer damage, HP erafco
         console.log(this.hp)
         if (this.hp <= 0) {
             this.kill(); // Verwijder de toren als HP op is
@@ -40,7 +40,7 @@ export class BuiltTower extends Actor {
 
 // Hier worden hardcoded alle torens ingezet
 export class AthenaTower extends BuiltTower {
-    constructor(x, y, width, height, sprite) {
+    constructor(x, y, width, height,) {
 
         super(x, y, width, height, Resources.AthenaTower.toSprite(), 200);
         this.shootingTimer = new Timer(() => {
@@ -86,7 +86,7 @@ export class PoseidonTower extends BuiltTower {
 
 // Functie voor het plaatsen van een toren
 export function placeTower(engine, x, y, width, height, typeOfTower) {
-
+    console.log('billen');
 
     let tower; // Variabel waarin het torentype wordt gemaakt
 
